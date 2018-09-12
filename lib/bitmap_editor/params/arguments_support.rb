@@ -1,8 +1,8 @@
+require './lib/bitmap_editor/parser'
+
 class BitmapEditor
   module Params
     module ArgumentsSupport
-      INTEGER_REGEX = /\A\d+\Z/
-
       def self.included(base)
         base.extend ClassMethods
       end
@@ -18,9 +18,8 @@ class BitmapEditor
             if instance_variable_defined?(var_name)
               instance_variable_get(var_name)
             else
-              instance_variable_set(
-                var_name, with_conversion(@raw_params[position], type)
-              )
+              converted_val = with_conversion(@raw_params[position], type)
+              instance_variable_set(var_name, converted_val)
             end
           end
         end
@@ -38,16 +37,7 @@ class BitmapEditor
       end
 
       def with_conversion(value, type)
-        conversion_method_name = "parse_#{type}"
-        return value unless respond_to?(conversion_method_name)
-        send(conversion_method_name, value)
-      end
-
-      def parse_integer(val)
-        return val if val.is_a?(Integer) || !val.to_s.match(INTEGER_REGEX)
-        Integer(val)
-      rescue ArgumentError, TypeError
-        raise BitmapEditor::Nan.new(val)
+        BitmapEditor::Parser.parse(value, type)
       end
     end
   end

@@ -17,6 +17,14 @@ class BitmapEditor
       data.map(&:join).join("\n")
     end
 
+    def []=(x, y, color)
+      data[y][x] = color
+    end
+
+    def [](x, y)
+      data[y][x]
+    end
+
     private
 
     def row

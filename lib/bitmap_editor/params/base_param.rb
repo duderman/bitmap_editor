@@ -8,6 +8,9 @@ class BitmapEditor
       include ActiveModel::Validations
       include BitmapEditor::Params::ArgumentsSupport
 
+      attr_reader :bitmap
+      delegate :width, :height, to: :bitmap, prefix: true
+
       def initialize(raw_params, bitmap = nil)
         @raw_params = raw_params
         @bitmap = bitmap
