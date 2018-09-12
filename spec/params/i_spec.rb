@@ -8,7 +8,6 @@ RSpec.describe BitmapEditor::Params::I, type: :param do
   let(:param) { described_class.new(raw_params) }
   let(:raw_params) { %w[1 2] }
 
-
   it { is_expected.to define_argument(:width).at(1) }
   it { is_expected.to define_argument(:height).at(0) }
 

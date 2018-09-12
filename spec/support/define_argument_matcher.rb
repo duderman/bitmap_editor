@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BitmapEditor
   module Matchers
     def define_argument(arg)
@@ -24,6 +26,7 @@ class BitmapEditor
       def matches?(instance)
         @instance = instance
         return false if no_argument? || index_doesnt_match?
+
         true
       end
 
@@ -37,6 +40,7 @@ class BitmapEditor
 
       def index_doesnt_match?
         return false unless @position
+
         index != @position
       end
 
@@ -46,7 +50,7 @@ class BitmapEditor
         elsif index_doesnt_match?
           "argument appears at index #{index} instead of #{@position}"
         else
-          "unknown error"
+          'unknown error'
         end
       end
     end

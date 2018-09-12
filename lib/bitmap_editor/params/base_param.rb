@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_model'
 require './lib/bitmap_editor/errors'
 require_relative './arguments_support'

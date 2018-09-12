@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/bitmap_editor/errors'
 
 class BitmapEditor
@@ -5,10 +7,10 @@ class BitmapEditor
     COMMAND_FORMAT = /\A[A-Z]\Z/
 
     def for_command(command)
-      if command =~ COMMAND_FORMAT && self.const_defined?(command)
-        self.const_get(command)
+      if command =~ COMMAND_FORMAT && const_defined?(command)
+        const_get(command)
       else
-        raise BitmapEditor::UnknownCommandError.new(command)
+        raise BitmapEditor::UnknownCommandError, command
       end
     end
 

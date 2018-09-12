@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class BitmapEditor
   class Bitmap
-    DEFAULT_COLOR = 'O'.freeze
+    DEFAULT_COLOR = 'O'
 
     attr_reader :width, :height
 

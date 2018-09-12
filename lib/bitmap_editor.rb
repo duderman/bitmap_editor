@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/bitmap_editor/interpreter'
 require './lib/bitmap_editor/bitmap'
 
@@ -11,7 +13,8 @@ class BitmapEditor
   end
 
   def run
-    return puts "Please provide correct file" if missing_file?
+    return puts 'Please provide correct file' if missing_file?
+
     each_line do |bitmap, (line, idx)|
       process_line(line, idx, bitmap) || break
     end
@@ -29,7 +32,7 @@ class BitmapEditor
 
   def process_line(line, idx, bitmap)
     BitmapEditor::Interpreter.interpret(bitmap, line)
-  rescue => error
+  rescue StandardError => error
     puts "Error on line #{idx + 1}. #{error.message}"
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BitmapEditor
   class UnknownCommandError < StandardError
     attr_reader :command

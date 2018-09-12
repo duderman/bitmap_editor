@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/bitmap_editor/commands'
 require './lib/bitmap_editor/params'
 require_relative './line'
@@ -36,6 +38,7 @@ class BitmapEditor::Interpreter
 
   def line
     return unless @raw_line.to_s.chomp
+
     @line ||= BitmapEditor::Line.new(@raw_line)
   end
 end

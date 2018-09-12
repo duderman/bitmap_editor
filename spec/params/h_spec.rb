@@ -9,7 +9,6 @@ RSpec.describe BitmapEditor::Params::H, type: :param do
   let(:raw_params) { %w[1 1 2 C] }
   let(:bitmap) { BitmapEditor::Bitmap.new(2, 3) }
 
-
   it { is_expected.to define_argument(:x1).at(0) }
   it { is_expected.to define_argument(:x2).at(1) }
   it { is_expected.to define_argument(:y).at(2) }
