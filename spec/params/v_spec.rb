@@ -10,10 +10,10 @@ RSpec.describe BitmapEditor::Params::V, type: :param do
   let(:bitmap) { BitmapEditor::Bitmap.new(2, 3) }
 
 
-  it { is_expected.to define_argument(:x) }
-  it { is_expected.to define_argument(:y1) }
-  it { is_expected.to define_argument(:y2) }
-  it { is_expected.to define_argument(:color) }
+  it { is_expected.to define_argument(:x).at(0) }
+  it { is_expected.to define_argument(:y1).at(1) }
+  it { is_expected.to define_argument(:y2).at(2) }
+  it { is_expected.to define_argument(:color).at(3) }
 
   it_behaves_like 'validates coordinate', :x, 2
   it_behaves_like 'validates coordinate', :y1, 3

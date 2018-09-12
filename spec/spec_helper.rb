@@ -104,10 +104,5 @@ RSpec.configure do |config|
   end
 
   config.include(Shoulda::Matchers::ActiveModel, type: :param)
-
-  RSpec::Matchers.define :define_argument do |expected|
-    match do |actual|
-      actual.class.defined_arguments.include?(expected)
-    end
-  end
+  config.include(BitmapEditor::Matchers, type: :param)
 end

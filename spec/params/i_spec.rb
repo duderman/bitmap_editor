@@ -9,8 +9,8 @@ RSpec.describe BitmapEditor::Params::I, type: :param do
   let(:raw_params) { %w[1 2] }
 
 
-  it { is_expected.to define_argument(:width) }
-  it { is_expected.to define_argument(:height) }
+  it { is_expected.to define_argument(:width).at(1) }
+  it { is_expected.to define_argument(:height).at(0) }
 
   it_behaves_like 'validates coordinate', :width, 250
   it_behaves_like 'validates coordinate', :height, 250
