@@ -59,7 +59,7 @@ DEPENDENCIES
   activemodel (~> 5.2.0)
   rspec (~> 3.8.0)
   rspec-its (~> 1.2.0)
-  rubocop
+  rubocop (~> 0.59)
   shoulda-matchers (~> 3.1.2)
 
 RUBY VERSION
