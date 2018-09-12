@@ -7,7 +7,9 @@ class BitmapEditor
     # Resets bitmap with default color
     class C < BaseCommand
       def run(bitmap)
-        BitmapEditor::Commands::I.new(width: bitmap.width, height: bitmap.height).run(bitmap)
+        BitmapEditor::Commands::I.new(
+          width: bitmap.width, height: bitmap.height
+        ).run(bitmap)
       end
     end
   end

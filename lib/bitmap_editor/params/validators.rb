@@ -9,8 +9,10 @@ class CoordinateValidator < ActiveModel::EachValidator
       record.errors.add(attribute, :not_an_integer)
       return
     end
-    record.errors.add(attribute, :greater_than, count: 0) unless value > 0
-    record.errors.add(attribute, 'is bigger than bitmap') unless value <= max_value(record)
+    record.errors.add(attribute, :greater_than, count: 0) unless value.positive?
+    return if value <= max_value(record)
+
+    record.errors.add(attribute, 'is bigger than bitmap')
   end
 
   def max_value(record)

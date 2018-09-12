@@ -10,7 +10,7 @@ class BitmapEditor
       end
 
       module ClassMethods
-        def argument(name, type)
+        def argument(name, type) # rubocop:disable Metrics/MethodLength
           var_name = "@#{name}"
           position = defined_arguments.length
           defined_arguments << name

@@ -7,15 +7,17 @@ class BitmapEditor
     COMMAND_FORMAT = /\A[A-Z]\Z/
 
     def for_command(command)
-      if command =~ COMMAND_FORMAT && const_defined?(command)
-        const_get(command)
-      else
-        raise BitmapEditor::UnknownCommandError, command
-      end
+      return const_get(command) if valid_command?(command)
+
+      raise BitmapEditor::UnknownCommandError, command
     end
 
     def self.included(target)
       target.extend(self)
+    end
+
+    def valid_command?(command)
+      command =~ COMMAND_FORMAT && const_defined?(command)
     end
   end
 end
