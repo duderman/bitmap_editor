@@ -5,13 +5,14 @@ class BitmapEditor
     class I < BaseParam
       MAX_FIELD_SIZE = 250
 
-      argument :width, :integer, 1
-      argument :height, :integer, 0
+      argument :height, :integer
+      argument :width, :integer
 
-      validates :width, :height, presence: true, numericality: {
-        greater_than: 0, less_than_or_equal_to: MAX_FIELD_SIZE,
-        only_integer: true
-      }
+      validates :width, :height, presence: true, coordinate: true
+
+      def max_size
+        MAX_FIELD_SIZE
+      end
     end
   end
 end

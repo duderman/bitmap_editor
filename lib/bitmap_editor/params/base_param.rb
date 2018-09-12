@@ -1,15 +1,13 @@
 require 'active_model'
 require './lib/bitmap_editor/errors'
 require_relative './arguments_support'
+require_relative './validators'
 
 class BitmapEditor
   module Params
     class BaseParam
       include ActiveModel::Validations
       include BitmapEditor::Params::ArgumentsSupport
-
-      attr_reader :bitmap
-      delegate :width, :height, to: :bitmap, prefix: true
 
       def initialize(raw_params, bitmap = nil)
         @raw_params = raw_params
@@ -19,6 +17,14 @@ class BitmapEditor
       def validate!
         raise_invalid_error if invalid?
         to_args
+      end
+
+      def max_x
+        @bitmap.width
+      end
+
+      def max_y
+        @bitmap.height
       end
 
       private

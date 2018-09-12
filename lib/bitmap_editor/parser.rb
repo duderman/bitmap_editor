@@ -1,6 +1,6 @@
 class BitmapEditor
   module Parser
-    INTEGER_REGEX = /\A\d+\Z/
+    INTEGER_REGEX = /\A\-?\d+\Z/
 
     module_function
 
@@ -15,10 +15,6 @@ class BitmapEditor
       Integer(val)
     rescue ArgumentError, TypeError
       raise BitmapEditor::Nan.new(val)
-    end
-
-    def parse_coordinate(val)
-      parse_integer(val)
     end
   end
 end

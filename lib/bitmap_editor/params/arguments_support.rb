@@ -8,18 +8,21 @@ class BitmapEditor
       end
 
       module ClassMethods
-        def argument(name, type, position)
+        def argument(name, type)
+          var_name = "@#{name}"
+          position = defined_arguments.length
           defined_arguments << name
 
-          attr_writer name
+          define_method "#{name}=" do |new_val|
+            converted_val = with_conversion(new_val, type)
+            instance_variable_set(var_name, converted_val)
+          end
 
           define_method name do
-            var_name = "@#{name}"
             if instance_variable_defined?(var_name)
               instance_variable_get(var_name)
             else
-              converted_val = with_conversion(@raw_params[position], type)
-              instance_variable_set(var_name, converted_val)
+              public_send("#{name}=", @raw_params[position])
             end
           end
         end
