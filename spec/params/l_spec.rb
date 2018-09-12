@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe BitmapEditor::Params::L, type: :param do
@@ -12,19 +14,7 @@ RSpec.describe BitmapEditor::Params::L, type: :param do
   it { is_expected.to define_argument(:y) }
   it { is_expected.to define_argument(:color) }
 
-  it do
-    is_expected.to validate_numericality_of(:x)
-                     .is_less_than_or_equal_to(2)
-                     .is_greater_than(0)
-                     .only_integer
-  end
-  it do
-    is_expected.to validate_numericality_of(:y)
-                     .is_less_than_or_equal_to(3)
-                     .is_greater_than(0)
-                     .only_integer
-  end
-  it { is_expected.to allow_value("B").for(:color) }
-  it { is_expected.not_to allow_value("BB").for(:color) }
-  it { is_expected.not_to allow_value("b").for(:color) }
+  it_behaves_like 'validates coordinate', :x, 2
+  it_behaves_like 'validates coordinate', :y, 3
+  it_behaves_like 'validates color'
 end

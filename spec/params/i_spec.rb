@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe BitmapEditor::Params::I, type: :param do
@@ -10,16 +12,6 @@ RSpec.describe BitmapEditor::Params::I, type: :param do
   it { is_expected.to define_argument(:width) }
   it { is_expected.to define_argument(:height) }
 
-  it do
-    is_expected.to validate_numericality_of(:width)
-                     .is_less_than_or_equal_to(250)
-                     .is_greater_than(0)
-                     .only_integer
-  end
-  it do
-    is_expected.to validate_numericality_of(:height)
-                     .is_less_than_or_equal_to(250)
-                     .is_greater_than(0)
-                     .only_integer
-  end
+  it_behaves_like 'validates coordinate', :width, 250
+  it_behaves_like 'validates coordinate', :height, 250
 end

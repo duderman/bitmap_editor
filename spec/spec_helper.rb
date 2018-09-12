@@ -19,6 +19,7 @@
 require 'shoulda-matchers'
 require 'rspec/its'
 
+Dir['./spec/support/*.rb'].each { |file| require file }
 require './lib/bitmap_editor'
 
 RSpec.configure do |config|
