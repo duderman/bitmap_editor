@@ -1,14 +1,21 @@
 require './lib/bitmap_editor/commands'
 require './lib/bitmap_editor/params'
+require_relative './line'
 
 class BitmapEditor::Interpreter
+  def self.interpret(bitmap, raw_line)
+    new(bitmap, raw_line).run
+  end
+
   def initialize(bitmap, raw_line)
     @bitmap = bitmap
     @raw_line = raw_line
   end
 
   def run
-    @bitmap.apply(command)
+    return @bitmap unless line.present?
+
+    command.run(@bitmap)
   end
 
   def command
@@ -28,6 +35,7 @@ class BitmapEditor::Interpreter
   end
 
   def line
-    @line ||= BitmapEditor::Line.parse(@raw_line)
+    return unless @raw_line.to_s.chomp
+    @line ||= BitmapEditor::Line.new(@raw_line)
   end
 end

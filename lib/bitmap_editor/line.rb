@@ -5,7 +5,7 @@ class BitmapEditor
     end
 
     def command
-      parts[0].upcase
+      parts[0].to_s.upcase
     end
 
     def params
