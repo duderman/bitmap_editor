@@ -4,9 +4,6 @@ RSpec.describe BitmapEditor::Commands::I, type: :command do
   subject { command }
 
   let(:command) { described_class.new(width: 1, height: 2) }
-  let(:height) { 1 }
-  let(:width) { 2 }
-
 
   describe '::run' do
     subject { command.run(BitmapEditor::Bitmap.new) }
