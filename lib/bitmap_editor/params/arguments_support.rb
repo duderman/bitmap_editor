@@ -33,7 +33,6 @@ class BitmapEditor
       end
 
       def to_args
-        puts self.class.defined_arguments
         self.class.defined_arguments.each_with_object({}) do |arg, result|
           result[arg] = public_send(arg)
         end
