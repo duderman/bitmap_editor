@@ -1,10 +1,14 @@
 source 'https://rubygems.org'
 
 ruby '2.3.4'
-gem 'activemodel', require: 'active_model'
+gem 'activemodel', '~> 5.2.0', require: 'active_model'
 
 group :test do
-  gem 'rspec'
+  gem 'rspec', '~> 3.8.0'
   gem 'shoulda-matchers', '~> 3.1.2'
   gem 'rspec-its', '~> 1.2.0'
+end
+
+group :development do
+  gem 'rubocop', '~> 0.59', require: false
 end
