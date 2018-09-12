@@ -1,5 +1,5 @@
 class BitmapEditor
-  class UnkownCommandError < StandardError
+  class UnknownCommandError < StandardError
     attr_reader :command
 
     def initialize(command)
