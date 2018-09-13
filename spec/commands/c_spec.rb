@@ -5,10 +5,8 @@ require 'spec_helper'
 RSpec.describe BitmapEditor::Commands::C, type: :command do
   subject { command }
 
-  let(:command) { described_class.new }
-  let(:height) { 2 }
-  let(:width) { 1 }
-  let(:bitmap) { BitmapEditor::Bitmap.new(width, height) }
+  let(:command) { described_class.new({}) }
+  let(:bitmap) { BitmapEditor::Bitmap.new(1, 2) }
 
   describe '::run' do
     subject { command.run(bitmap) }
