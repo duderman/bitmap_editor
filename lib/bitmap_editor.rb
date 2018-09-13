@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require './lib/bitmap_editor/interpreter'
-require './lib/bitmap_editor/bitmap'
+require_relative './bitmap_editor/interpreter'
+require_relative './bitmap_editor/bitmap'
 
 class BitmapEditor
   def self.run(file)

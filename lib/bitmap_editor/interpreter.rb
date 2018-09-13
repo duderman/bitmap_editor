@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require './lib/bitmap_editor/commands'
-require './lib/bitmap_editor/params'
+require_relative './commands'
+require_relative './params'
 require_relative './line'
 
 class BitmapEditor

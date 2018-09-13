@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './lib/bitmap_editor/commands/base_command'
+require_relative './base_command'
 
 class BitmapEditor
   module Commands

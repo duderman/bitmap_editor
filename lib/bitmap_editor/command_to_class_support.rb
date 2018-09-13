@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './lib/bitmap_editor/errors'
+require_relative './errors'
 
 class BitmapEditor
   module CommandToClassSupport
