@@ -11,7 +11,7 @@ class BitmapEditor
     end
 
     def params
-      parts[1..-1]
+      parts[1..-1] || []
     end
 
     private
